@@ -25,36 +25,43 @@ function checkQuestion() {
 	}
 }
 
-function computerPlay() {
-	return weapons[Math.floor(Math.random() * weapons.length)];
-}
 
-var computerSelection = computerPlay();
-
-function compGamePlay() {
-	var computerIndex = weapons.indexOf(computerSelection);
-	return computerIndex;
-}
-
-function myGamePlay() {
-	var myIndex = weapons.indexOf(myWeapon);
-	return myIndex;
-}
 
 function findWinner() {
+
+	function computerPlay() {
+	return weapons[Math.floor(Math.random() * weapons.length)];
+	}
+
+	var computerSelection = computerPlay();
+
+	function compGamePlay() {
+		var computerIndex = weapons.indexOf(computerSelection);
+		return computerIndex;
+	}
+
+	function myGamePlay() {
+		var myIndex = weapons.indexOf(myWeapon);
+		return myIndex;
+	}
+
 
 	if(compGamePlay() - myGamePlay() === 0) {
 		alert("Comp chose " + computerSelection + " tie!");
 	} else if(compGamePlay() - myGamePlay() === -1) {
 		alert("Comp chose " + computerSelection + " You lose!");
+		var compNewScore = compWins++;
 	} else if(compGamePlay() - myGamePlay() === -2) {
 		alert("Comp chose " + computerSelection + " You win!");
+		var myNewScore = myWins++;
 	} else if (compGamePlay() - myGamePlay() === 2) {
 		alert("Comp chose " + computerSelection + " You lose!");
+		var compNewScore = compWins++;
 	} else {
 		alert("Comp chose " + computerSelection + " You win!");
+		var myNewScore = myWins++;
 	}
-	var question = prompt("Game Count = " + gameCount + " Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
+	var question = prompt("Game Count = " + gameCount + ". You've won: " + myWins + ". The computer has won:" + compWins + " Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
 }
 
 while (gameCount <5) {
@@ -62,7 +69,7 @@ while (gameCount <5) {
 	findWinner();
 }
 
-alert("Finished!");
+alert("Finished! The final score is ... computer: " + compWins + " You: " + myWins);
 
 </script>
 
