@@ -8,10 +8,22 @@
 
 <script>
 
-
+var gameCount = 1;
+var myWins = 0;
+var compWins = 0;
 const weapons = ["paper", "rock", "scissors"]
-let question = prompt("Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
-let myWeapon = question.toLowerCase();
+
+var question = prompt("Game Count = " + gameCount + " Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
+var myWeapon = question.toLowerCase();
+
+
+function checkQuestion() {
+	if(myWeapon != "paper" || myWeapon != "rock" || myWeapon != "scissors") {
+		alert("Plese type in the right words") || location.reload();
+	} else {
+		findWinner();
+	}
+}
 
 function computerPlay() {
 	return weapons[Math.floor(Math.random() * weapons.length)];
@@ -30,6 +42,7 @@ function myGamePlay() {
 }
 
 function findWinner() {
+
 	if(compGamePlay() - myGamePlay() === 0) {
 		alert("Comp chose " + computerSelection + " tie!");
 	} else if(compGamePlay() - myGamePlay() === -1) {
@@ -41,9 +54,15 @@ function findWinner() {
 	} else {
 		alert("Comp chose " + computerSelection + " You win!");
 	}
+	var question = prompt("Game Count = " + gameCount + " Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
 }
 
-findWinner();
+while (gameCount <5) {
+	gameCount++
+	findWinner();
+}
+
+alert("Finished!");
 
 </script>
 
