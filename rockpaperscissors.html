@@ -10,7 +10,8 @@
 
 
 const weapons = ["paper", "rock", "scissors"]
-let myWeapon = prompt("Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
+let question = prompt("Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
+let myWeapon = question.toLowerCase();
 
 function computerPlay() {
 	return weapons[Math.floor(Math.random() * weapons.length)];
