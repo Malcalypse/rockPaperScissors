@@ -16,16 +16,33 @@ function computerPlay() {
 	return weapons[Math.floor(Math.random() * weapons.length)];
 }
 
+var computerSelection = computerPlay();
 
-
-function gamePlay() {
-	let computerIndex = weapons.indexOf(computerSelection);
+function compGamePlay() {
+	var computerIndex = weapons.indexOf(computerSelection);
 	return computerIndex;
 }
 
-alert("You chose " + myWeapon + " and comp chose " + gamePlay());
+function myGamePlay() {
+	var myIndex = weapons.indexOf(myWeapon);
+	return myIndex;
+}
 
-var computerSelection = computerPlay();
+function findWinner() {
+	if(compGamePlay() - myGamePlay() === 0) {
+		alert("Comp chose " + computerSelection + " tie!");
+	} else if(compGamePlay() - myGamePlay() === -1) {
+		alert("Comp chose " + computerSelection + " You lose!");
+	} else if(compGamePlay() - myGamePlay() === -2) {
+		alert("Comp chose " + computerSelection + " You win!");
+	} else if (compGamePlay() - myGamePlay() === 2) {
+		alert("Comp chose " + computerSelection + " You lose!");
+	} else {
+		alert("Comp chose " + computerSelection + " You win!");
+	}
+}
+
+findWinner();
 
 </script>
 
