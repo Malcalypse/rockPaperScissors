@@ -11,76 +11,68 @@
 var gameCount = 1;
 var myWins = 0;
 var compWins = 0;
-const weapons = ["paper", "rock", "scissors"]
 
-var computerSelection = computerPlay() 
-
-var computerIndex = compGamePlay() 
-
-var myIndex = myGamePlay() 
-
-
-
-function computerPlay() {
-	return weapons[Math.floor(Math.random() * weapons.length)];
-	}
-
-function compGamePlay() {
-	weapons.indexOf(computerSelection);
-	return computerIndex;
-	}
-
-function myGamePlay() {
-	weapons.indexOf(myWeapon);
-		return myIndex;
-	}
-
-
-
-
+const weapons = ["paper", "rock", "scissors"];
 
 var question = prompt("Game Count = " + gameCount + " Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
 var myWeapon = question.toLowerCase();
 
 
-function checkQuestion() {
-	if(myWeapon != "paper" || myWeapon != "rock" || myWeapon != "scissors") {
-		alert("Plese type in the right words") || location.reload();
-	} else {
-		findWinner();
-	}
-}
+
+
 
 while (gameCount <5) {
 	gameCount++;
 	findWinner();
 }
 
+
+
 function findWinner() {
 
-	if(compGamePlay() - myIndex === 0) {
-		alert("Comp chose " + computerSelection + " tie!");
-	} else if(computerIndex - myIndex === -1) {
-		alert("Comp chose " + computerSelection + " You lose!");
-		var compNewScore = compWins++;
-	} else if(computerIndex - myIndex === -2) {
-		alert("Comp chose " + computerSelection + " You win!");
-		var myNewScore = myWins++;
-	} else if (computerIndex - myIndex === 2) {
-		alert("Comp chose " + computerSelection + " You lose!");
-		var compNewScore = compWins++;
+
+
+	function computerPlay() {
+	return weapons[Math.floor(Math.random() * weapons.length)];
+	}
+
+	var computerSelection = computerPlay();
+
+	function compGamePlay() {
+		var computerIndex = weapons.indexOf(computerSelection);
+		return computerIndex;
+	}
+
+	function myGamePlay() {
+		var myIndex = weapons.indexOf(myWeapon);
+		return myIndex;
+	}
+
+	if(compGamePlay() - myGamePlay() == 0) {
+		alert("comp chose " + computerSelection + " tie");
+	} else if(compGamePlay() - myGamePlay() == -1) {
+		alert("comp chose " + computerSelection + ". You lose!");
+		compWins++;
+	} else if(compGamePlay() - myGamePlay() == -2) {
+		alert("comp chose " + computerSelection + ". You win!");
+		myWins++;
+	} else if(compGamePlay() - myGamePlay() == 2) {
+		alert("comp chose " + computerSelection + ". You lose!");
+		compWins++;
 	} else {
-		alert("Comp chose " + computerSelection + " You win!");
-		var myNewScore = myWins++;
+		alert("comp chose " + computerSelection + ". You win!");
+		myWins++;
 	}
 
-	var question = prompt("Game Count = " + gameCount + ". You've won: " + myWins + ". The computer has won:" + compWins + " Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
+	alert("Game Count = " + gameCount + ". You've won: " + myWins + ". The computer has won:" + compWins + " Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
+
+	var question = prompt("choose again!");
 
 	}
 
 
 
-alert("Comp chose " + computerSelection + ". That means the final score is ... computer: " + compWins + " You: " + myWins);
+alert("The final score is ... computer: " + compWins + " You: " + myWins);
 
 
 </script>
