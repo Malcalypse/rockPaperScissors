@@ -20,8 +20,7 @@ var myWeapon = question.toLowerCase();
 
 
 
-
-while (gameCount <5) {
+while (gameCount <4) {
 	gameCount++;
 	findWinner();
 }
@@ -30,7 +29,9 @@ while (gameCount <5) {
 
 function findWinner() {
 
+	var question = prompt("choose again!");
 
+	var lastComp = computerSelection;
 
 	function computerPlay() {
 	return weapons[Math.floor(Math.random() * weapons.length)];
@@ -66,14 +67,53 @@ function findWinner() {
 
 	alert("Game Count = " + gameCount + ". You've won: " + myWins + ". The computer has won:" + compWins + " Choose a weapon: " + weapons[0] + ", " + weapons [1] + " or " + weapons [2]);
 
-	var question = prompt("choose again!");
 
 	}
 
 
 
-alert("The final score is ... computer: " + compWins + " You: " + myWins);
 
+function lastOne() {
+	
+	var lastQuestion = prompt("final choice!");
+
+	function lastComputerPlay() {
+		return weapons[Math.floor(Math.random() * weapons.length)];
+	}
+
+	var lastComputerSelection = lastComputerPlay();
+
+	function lastCompGamePlay() {
+		var lastComputerIndex = weapons.indexOf(lastComputerSelection);
+		return lastComputerIndex;
+	}
+
+	function myLastGamePlay() {
+		var myLastIndex = weapons.indexOf(myWeapon);
+		return myLastIndex;
+	}
+
+	if(lastCompGamePlay() - myLastGamePlay() == 0) {
+		alert("comp chose " + LastComputerSelection + " tie");
+	} else if(lastCompGamePlay() - myLastGamePlay() == -1) {
+		alert("comp chose " + lastComputerSelection + ". You lose!");
+		lastCompWins++;
+	} else if(lastCompGamePlay() - myLastGamePlay() == -2) {
+		alert("comp chose " + lastComputerSelection + ". You win!");
+		myWins++;
+	} else if(lastCompGamePlay() - myLastGamePlay() == 2) {
+		alert("comp chose " + lastComputerSelection + ". You lose!");
+		compWins++;
+	} else {
+		alert("comp chose " + lastComputerSelection + ". You win!");
+		myWins++;
+	}
+
+	alert("The final score is ... computer: " + compWins + " You: " + myWins);
+
+	}
+
+lastOne();
 
 </script>
 
